@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Anda - Temu Rasa Cafe</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tambahan khusus untuk merapikan tombol + dan - */
+        .cart-item-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-qty {
+            background-color: var(--primary-color, #4a3728);
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .btn-qty:hover {
+            background-color: #2c1e15;
+        }
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .item-price-sub {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Temu<span>Rasa</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="index.html#menu">Menu</a></li>
+                <li><a href="cart.html" class="active">Keranjang</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart-container">
+        <h2>Keranjang Belanja Anda</h2>
+        <div class="cart-box">
+            <ul id="cart-items-page">
+                </ul>
+            <div class="cart-total">
+                <h3>Total Harga: <span id="total-price-page">Rp 0</span></h3>
+                <div class="cart-buttons">
+                    <button id="btn-clear-cart" class="btn" style="background-color: #d9534f; color: white;">Kosongkan</button>
+                    <button id="btn-checkout-page" class="btn">Checkout (Simulasi)</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Temu Rasa Cafe. Made by TARFASTICODERS.</p>
+    </footer>
+
+    <script>
+        const cartItemsContainer = document.getElementById('cart-items-page');
+        const totalPriceElement = document.getElementById('total-price-page');
+        const clearCartBtn = document.getElementById('btn-clear-cart');
+        const checkoutBtn = document.getElementById('btn-checkout-page');
+
+        // Ambil data keranjang dari localStorage browser
+        let cart = JSON.parse(localStorage.getItem('cafeCart')) || [];
+
+        // Fungsi normalisasi data (mengubah format lama ke format baru yang punya quantity)
+        function formatCartData() {
+            let formattedCart = [];
+            cart.forEach(item => {
+                // Cari tahu apakah item sudah ada di list baru
+                let existingItem = formattedCart.find(fItem => fItem.name === item.name);
+                if (existingItem) {
+                    existingItem.quantity += (item.quantity || 1);
+                } else {
+                    formattedCart.push({
+                        name: item.name,
+                        price: item.price,
+                        quantity: item.quantity || 1
+                    });
+                }
+            });
+            cart = formattedCart;
+            localStorage.setItem('cafeCart', JSON.stringify(cart));
+        }
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let totalHarga = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-message" style="text-align: center; color: #888;">Keranjang masih kosong. Yuk, pilih menu dulu!</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const subTotal = item.price * item.quantity;
+                    totalHarga += subTotal;
+
+                    const li = document.createElement('li');
+                    li.className = 'cart-item-flex';
+                    li.innerHTML = `
+                        <div class="item-info">
+                            <strong>${item.name}</strong>
+                            <span class="item-price-sub">Rp ${item.price.toLocaleString('id-ID')} × ${item.quantity}</span>
+                        </div>
+                        <div class="qty-controls">
+                            <button class="btn-qty" onclick="changeQuantity(${index}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="btn-qty" onclick="changeQuantity(${index}, 1)">+</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(li);
+                });
+            }
+            totalPriceElement.innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+        }
+
+        // Fungsi untuk menambah atau mengurangi jumlah item
+        window.changeQuantity = function(index, delta) {
+            cart[index].quantity += delta;
+
+            // Jika jumlahnya kurang dari 1, hapus item dari keranjang
+            if (cart[index].quantity < 1) {
+                cart.splice(index, 1);
+            }
+
+            // Simpan perubahan ke localStorage dan render ulang halaman
+            localStorage.setItem('cafeCart', JSON.stringify(cart));
+            renderCart();
+        };
+
+        // Fungsi Tombol Kosongkan Keranjang
+        clearCartBtn.addEventListener('click', () => {
+            if(confirm('Apakah Anda yakin ingin mengosongkan keranjang?')) {
+                localStorage.removeItem('cafeCart');
+                cart = [];
+                renderCart();
+            }
+        });
+
+        // Fungsi Tombol Checkout
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Keranjang kosong! Silakan pilih menu andalanmu di halaman utama.');
+            } else {
+                let totalSelesai = totalPriceElement.innerText;
+                alert(`Pesananmu berhasil diproses!\nTotal Transaksi: ${totalSelesai}\nBarista kami sedang menyiapkan pesanan terbaik untukmu. ❤️`);
+                localStorage.removeItem('cafeCart');
+                cart = [];
+                renderCart();
+            }
+        });
+
+        // Jalankan format data dan render saat halaman dibuka
+        formatCartData();
+        renderCart();
+    </script>
+</body>
+</html>

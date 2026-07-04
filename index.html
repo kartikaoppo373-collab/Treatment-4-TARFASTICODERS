@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temu Rasa Cafe - Kedai Kopi Estetik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+    <nav class="navbar">
+        <div class="logo">Temu<span>Rasa</span></div>
+        <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Tentang Kami</a></li>
+    <li><a href="index.html#menu">Menu</a></li>
+    <li><a href="keranjang.html">Keranjang</a></li> <li><a href="contact.html">Kontak</a></li>
+</ul>
+    </nav>
+</header>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Temukan Rasa Kopi Terbaik di <br><span>Temu Rasa Cafe</span></h1>
+            <p>Tempat bersinggah melepas penat, ditemani secangkir kehangatan rasa lokal yang otentik.</p>
+            <a href="#menu" class="btn">Lihat Menu</a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-container">
+        <h2>Menu Andalan Kami</h2>
+        
+        <div class="filter-container">
+    <button class="filter-btn active" data-category="all">Semua</button>
+    <button class="filter-btn" data-category="coffee">Coffee</button>
+    <button class="filter-btn" data-category="non-coffee">Non-Coffee</button>
+    <button class="filter-btn" data-category="food">Makanan</button> <button class="filter-btn" data-category="mix-platter">Mix Platter</button> </div>
+
+        <div class="menu-grid">
+    <div class="menu-item" data-category="coffee">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=500" alt="Kopi Aren">
+        <h3>Es Kopi Susu Gula Aren</h3>
+        <p class="price">Rp 18.000</p>
+        <button class="btn-order" data-name="Es Kopi Susu Gula Aren" data-price="18000">Pesan</button>
+    </div>
+    <div class="menu-item" data-category="coffee">
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=500" alt="Americano">
+        <h3>Ice Americano</h3>
+        <p class="price">Rp 15.000</p>
+        <button class="btn-order" data-name="Ice Americano" data-price="15000">Pesan</button>
+    </div>
+    <div class="menu-item" data-category="coffee">
+        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=500" alt="Cafe Latte">
+        <h3>Caramel Latte</h3>
+        <p class="price">Rp 22.000</p>
+        <button class="btn-order" data-name="Caramel Latte" data-price="22000">Pesan</button>
+    </div>
+
+    <div class="menu-item" data-category="non-coffee">
+    <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?q=80&w=500" alt="Choco Drink">
+    <h3>Choco Drink</h3>
+    <p class="price">Rp 18.000</p>
+    <button class="btn-order" data-name="Choco Drink" data-price="18000">Pesan</button>
+</div>
+
+<div class="menu-item" data-category="non-coffee">
+    <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=500" alt="Jus Jeruk">
+    <h3>Jus Jeruk</h3>
+    <p class="price">Rp 15.000</p>
+    <button class="btn-order" data-name="Jus Jeruk" data-price="15000">Pesan</button>
+</div>
+
+<div class="menu-item" data-category="non-coffee">
+    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=500" alt="Lemon Tea">
+    <h3>Fresh Lemon Tea</h3>
+    <p class="price">Rp 12.000</p>
+    <button class="btn-order" data-name="Fresh Lemon Tea" data-price="12000">Pesan</button>
+</div>
+
+<div class="menu-item" data-category="non-coffee">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500" alt="Thai Tea">
+    <h3>Authentic Thai Tea</h3>
+    <p class="price">Rp 15.000</p>
+    <button class="btn-order" data-name="Authentic Thai Tea" data-price="15000">Pesan</button>
+</div>
+    <div class="menu-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500" alt="Vegetarian">
+        <h3>Vegetarian</h3>
+        <p class="price">Rp 25.000</p>
+        <button class="btn-order" data-name="Vegetarian" data-price="25000">Pesan</button>
+    </div>
+    <div class="menu-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500" alt="Pizza Spesial">
+        <h3>Pizza Spesial</h3>
+        <p class="price">Rp 22.000</p>
+        <button class="btn-order" data-name="Pizza Spesial" data-price="22000">Pesan</button>
+    </div>
+
+    <div class="menu-item" data-category="mix-platter">
+        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=500" alt="Mix Platter 1">
+        <h3>Snack Mix Platter A (Kentang + Sosis)</h3>
+        <p class="price">Rp 28.000</p>
+        <button class="btn-order" data-name="Snack Mix Platter A" data-price="28000">Pesan</button>
+    </div>
+    <div class="menu-item" data-category="mix-platter">
+        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=500" alt="Mix Platter 2">
+        <h3>Sharing Platter (Nugget + Bakso Goreng)</h3>
+        <p class="price">Rp 30.000</p>
+        <button class="btn-order" data-name="Sharing Platter" data-price="30000">Pesan</button>
+    </div>
+</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Temu Rasa Cafe. Made by TARFASTICODERS.</p>
+    </footer>
+
+    <script href="script.js" src="script.js"></script>
+</body>
+</html>
