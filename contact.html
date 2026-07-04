@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - Temu Rasa Cafe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Temu<span>Rasa</span></div>
+            <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Tentang Kami</a></li>
+    <li><a href="index.html#menu">Menu</a></li>
+    <li><a href="keranjang.html">Keranjang</a></li> <li><a href="contact.html">Kontak</a></li>
+</ul>
+        </nav>
+    </header>
+
+    <main class="contact-container">
+        
+        <div class="contact-info">
+            <h2>Hubungi & Kunjungi Kami</h2>
+            <p><strong>📍 Alamat:</strong> Jl. Thamrin No. 12, Kota Medan, Sumatera Utara</p>
+            <p><strong>⏰ Jam Operasional:</strong> Setiap Hari (10.00 WIB - 22.00 WIB)</p>
+            <p><strong>📞 WhatsApp:</strong> +62 812-3456-7890</p>
+            <p><strong>📸 Instagram:</strong> @temurasa.cafe</p>
+        </div>
+
+        <div class="contact-form-box">
+            <h2>Kirim Saran & Masukan</h2>
+            <form id="saranForm">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" required placeholder="Masukkan nama Anda">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="Masukkan email Anda">
+                </div>
+                <div class="form-group">
+                    <label>Pesan</label>
+                    <textarea rows="4" required placeholder="Tuliskan pesan atau ulasan Anda..."></textarea>
+                </div>
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+        </div>
+
+        <div id="loveModal" class="modal-overlay">
+            <div class="love-popup">
+                <div class="heart-icon">❤️</div>
+                <p>Terima kasih atas feedback anda!</p>
+                <button id="closeModalBtn" class="btn-close">Sama-sama</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Temu Rasa Cafe. Made by TARFASTICODERS.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('saranForm');
+        const modal = document.getElementById('loveModal');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        // Munculkan Pop-up saat form dikirim
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            modal.classList.add('show');
+            form.reset();
+        });
+
+        // Sembunyikan Pop-up saat tombol ditutup
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+        });
+    </script>
+
+</body>
+</html>
