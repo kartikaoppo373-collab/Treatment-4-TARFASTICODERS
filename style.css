@@ -1,0 +1,413 @@
+/* RESET STYLE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: #4a3728; /* Cokelat Kopi */
+    --secondary-color: #dfd3c3; /* Cream */
+    --dark-color: #2c1e15;
+    --light-color: #f8f5f1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Mengambil 100% tinggi layar */
+    margin: 0;
+    font-family: Arial, sans-serif; /* Sesuaikan dengan font kalian */
+    background-color: #f8f5f1;
+}
+/* Atur elemen pembungkus konten utama agar mendorong footer ke bawah */
+main, .cart-container, .contact-container, .content-page {
+    flex: 1; /* Ini kunci utama yang akan mendorong footer otomatis ke paling bawah */
+}
+
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .logo span {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 span {
+    color: var(--secondary-color);
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: white;
+}
+
+/* MENU SECTION */
+.menu-container, .cart-container {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.menu-container h2, .cart-container h2 {
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.filter-container {
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    margin: 5px;
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.menu-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.menu-item h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.menu-item .price {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-order {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* CART SECTION */
+.cart-box {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+#cart-items {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.empty-message {
+    text-align: center;
+    color: #888;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #4a3728; /* Sesuaikan dengan warna var(--dark-color) kalian */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* ======================================================= */
+/* STYLING KHUSUS HALAMAN KONTAK (contact.html)            */
+/* ======================================================= */
+
+.contact-container { 
+    padding: 80px 8%; 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 40px; 
+    justify-content: center; 
+}
+
+.contact-info, .contact-form-box { 
+    flex: 1; 
+    min-width: 300px; 
+    background: white; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
+}
+
+.contact-info h2, .contact-form-box h2 { 
+    margin-bottom: 20px; 
+    color: var(--primary-color); 
+}
+
+.contact-info p { 
+    margin-bottom: 15px; 
+    font-size: 16px; 
+    line-height: 1.6; 
+}
+
+.form-group { 
+    margin-bottom: 15px; 
+    text-align: left; 
+}
+
+.form-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+.form-group input, .form-group textarea { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+}
+
+.contact-form-box .btn { 
+    width: 100%; 
+    margin-top: 10px; 
+}
+
+
+/* ======================================================= */
+/* STYLING UNTUK POP-UP LOVE CUSTOM                        */
+/* ======================================================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Latar belakang gelap transparan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Class aktif saat pop-up dimunculkan via JavaScript */
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.love-popup {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    width: 90%;
+    transform: scale(0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-overlay.show .love-popup {
+    transform: scale(1);
+}
+
+/* Animasi detak jantung pada icon love */
+.heart-icon {
+    font-size: 70px;
+    margin-bottom: 15px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.15); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.15); }
+    80% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.love-popup p {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.btn-close {
+    background-color: #e28743; /* Warna aksen oranye menarik */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-close:hover {
+    background-color: var(--primary-color);
+}
+
+/* ======================================================= */
+/* STYLING KHUSUS HALAMAN TENTANG KAMI (about.html)        */
+/* ======================================================= */
+
+.content-page { 
+    padding: 80px 8%; 
+    text-align: center; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+.content-page h1 { 
+    font-size: 36px; 
+    margin-bottom: 20px; 
+    color: var(--primary-color); 
+}
+
+.content-page p { 
+    font-size: 18px; 
+    line-height: 1.8; 
+    color: #555; 
+    margin-bottom: 20px; 
+}
+
+.cafe-img { 
+    width: 100%; 
+    max-height: 400px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    margin-top: 20px; 
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ini kunci agar gambar otomatis menyesuaikan kotak card menu */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
